@@ -1,0 +1,26 @@
+[
+    {
+        "numeroCliente": 175069,
+        "nombre": "pepe",
+        "apellido": "Gangi",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "44685740",
+        "mail": "ahuitzcaracciolo@gmail.com",
+        "tipoCliente": "individual",
+        "pais": "Argentina",
+        "ciudad": "Capital Federal",
+        "telefono": "1131831276"
+    },
+    {
+        "numeroCliente": 175069,
+        "nombre": "pepe",
+        "apellido": "Gangi",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "44685740",
+        "mail": "ahuitzcaracciolo@gmail.com",
+        "tipoCliente": "individual",
+        "pais": "Argentina",
+        "ciudad": "Capital Federal",
+        "telefono": "1131831276"
+    }
+]
