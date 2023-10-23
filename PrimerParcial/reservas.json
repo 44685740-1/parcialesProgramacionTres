@@ -1,0 +1,20 @@
+{
+    "0": {
+        "id": 425950,
+        "fechaDeEntrada": "5-10-2023",
+        "fehcaDeSalida": "20-9-2023",
+        "tipoHabitacion": "simple",
+        "importeTotalReserva": "1000",
+        "numeroCliente": "687923",
+        "tipoCliente": "individual"
+    },
+    "2": {
+        "id": 526709,
+        "fechaDeEntrada": "5-9-2023",
+        "fehcaDeSalida": "20-9-2023",
+        "tipoHabitacion": "simple",
+        "importeTotalReserva": "1000",
+        "numeroCliente": "687987",
+        "tipoCliente": "individual"
+    }
+}

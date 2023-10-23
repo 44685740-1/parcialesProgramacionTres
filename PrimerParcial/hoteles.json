@@ -1,15 +1,15 @@
 [
     {
-        "numeroCliente": 175069,
-        "nombre": "pepe",
-        "apellido": "Gangi",
-        "tipoDocumento": "dni",
-        "numeroDocumento": "44685740",
-        "mail": "ahuitzcaracciolo@gmail.com",
+        "numeroCliente": "271477",
+        "nombre": "Alejandro",
+        "apellido": "Rozas",
+        "tipoDocumento": "DNI",
+        "numeroDocumento": "32301114",
+        "mail": "arozas@gmail.com",
         "tipoCliente": "individual",
         "pais": "Argentina",
-        "ciudad": "Capital Federal",
-        "telefono": "1131831276"
+        "ciudad": "Buenos Aires",
+        "telefono": "Rozas"
     },
     {
         "numeroCliente": 175069,
@@ -22,5 +22,53 @@
         "pais": "Argentina",
         "ciudad": "Capital Federal",
         "telefono": "1131831276"
+    },
+    {
+        "numeroCliente": 687927,
+        "nombre": "Juan",
+        "apellido": "Gangi",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "44685740",
+        "mail": "ahuitzcaracciolo@gmail.com",
+        "tipoCliente": "individual",
+        "pais": "Argentina",
+        "ciudad": "Capital Federal",
+        "telefono": "1131831276"
+    },
+    {
+        "numeroCliente": 576363,
+        "nombre": "Alberto",
+        "apellido": "Briceno",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "4567899",
+        "mail": "briceno@gmail.com",
+        "tipoCliente": "individual",
+        "pais": "Venezuela",
+        "ciudad": "Caracas",
+        "telefono": "Briceno"
+    },
+    {
+        "numeroCliente": 687544,
+        "nombre": "Humberto",
+        "apellido": "Briceno",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "4567899",
+        "mail": "briceno@gmail.com",
+        "tipoCliente": "individual",
+        "pais": "Venezuela",
+        "ciudad": "Caracas",
+        "telefono": "Briceno"
+    },
+    {
+        "numeroCliente": 125569,
+        "nombre": "sxsxxs",
+        "apellido": "Briceno",
+        "tipoDocumento": "dni",
+        "numeroDocumento": "4567899",
+        "mail": "briceno@gmail.com",
+        "tipoCliente": "individual",
+        "pais": "Venezuela",
+        "ciudad": "Caracas",
+        "telefono": "Briceno"
     }
 ]
