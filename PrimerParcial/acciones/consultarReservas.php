@@ -10,14 +10,14 @@
             if (isset($_GET["fecha"])) {
                 $fecha = $_GET["fecha"];
                 $retorno = reserva::acumuladorImporteHabitacionFecha($tipoHabitacion,$fecha);
-                echo $retorno;
+                echo "El total de importe de las reservas es de {$retorno}";
             } else {
                 date_default_timezone_set("America/Argentina/Buenos_Aires");
                 $fechaAyer = new DateTime();
                 $fechaAyer->modify("-1 days"); 
                 $fechaAyerString = $fechaAyer->format("d-m-Y");   
                 $retorno = reserva::acumuladorImporteHabitacionFecha($tipoHabitacion,$fechaAyerString);
-                echo $retorno;
+                echo "El total de importe de las reservas de ayer es de {$retorno}";
             }
             break;
         case 'b':

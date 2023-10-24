@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "57bc3228-be14-4298-bb6a-1fbad4b6d11c",
+		"name": "PrimerParcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29743146"
+	},
+	"item": [
+		{
+			"name": "clienteAlta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Rodirigo",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "Escuadra",
+							"type": "text"
+						},
+						{
+							"key": "tipoDocumento",
+							"value": "dni",
+							"type": "text"
+						},
+						{
+							"key": "numeroDocumento",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "mail",
+							"value": "rodrigo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "tipoCliente",
+							"value": "corporativo",
+							"type": "text"
+						},
+						{
+							"key": "pais",
+							"value": "italia",
+							"type": "text"
+						},
+						{
+							"key": "ciudad",
+							"value": "Milan",
+							"type": "text"
+						},
+						{
+							"key": "telefono",
+							"value": "87451212",
+							"type": "text"
+						},
+						{
+							"key": "fotoPerfil",
+							"type": "file",
+							"src": "/C:/Users/ahuit/OneDrive/Escritorio/cbc/profile.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/ReposProgramacionTresPHP/Parciales/PrimerParcial/?accion=clienteAlta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ReposProgramacionTresPHP",
+						"Parciales",
+						"PrimerParcial",
+						""
+					],
+					"query": [
+						{
+							"key": "accion",
+							"value": "clienteAlta"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultarCliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "numeroCliente",
+							"value": "407140",
+							"type": "text"
+						},
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/ReposProgramacionTresPHP/Parciales/PrimerParcial/?accion=consultarCliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ReposProgramacionTresPHP",
+						"Parciales",
+						"PrimerParcial",
+						""
+					],
+					"query": [
+						{
+							"key": "accion",
+							"value": "consultarCliente"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservaHabitacional",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoCliente",
+							"value": "corporativo",
+							"type": "text"
+						},
+						{
+							"key": "numeroCliente",
+							"value": "672620",
+							"type": "text"
+						},
+						{
+							"key": "fechaDeEntrada",
+							"value": "4-10-2023",
+							"type": "text"
+						},
+						{
+							"key": "fechaDeSalida",
+							"value": "25-10-2023",
+							"type": "text"
+						},
+						{
+							"key": "tipoHabitacion",
+							"value": "doble",
+							"type": "text"
+						},
+						{
+							"key": "importeTotalReserva",
+							"value": "2000",
+							"type": "text"
+						},
+						{
+							"key": "fotoReserva",
+							"type": "file",
+							"src": "/C:/Users/ahuit/OneDrive/Escritorio/cbc/imagenHabitacionDos.png"
+						},
+						{
+							"key": "estado",
+							"value": "activa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/ReposProgramacionTresPHP/Parciales/PrimerParcial/?accion=reservaHabitacional",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ReposProgramacionTresPHP",
+						"Parciales",
+						"PrimerParcial",
+						""
+					],
+					"query": [
+						{
+							"key": "accion",
+							"value": "reservaHabitacional"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultarReservas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/ReposProgramacionTresPHP/Parciales/PrimerParcial/?accion=consultarReservas&tipoHabitacion=doble&fecha=5-9-2023&listar=d&numeroDeCliente=672620&fechaUno=5-9-2022&fechaDos=5-10-2023",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ReposProgramacionTresPHP",
+						"Parciales",
+						"PrimerParcial",
+						""
+					],
+					"query": [
+						{
+							"key": "accion",
+							"value": "consultarReservas"
+						},
+						{
+							"key": "tipoHabitacion",
+							"value": "doble"
+						},
+						{
+							"key": "fecha",
+							"value": "5-9-2023"
+						},
+						{
+							"key": "listar",
+							"value": "d"
+						},
+						{
+							"key": "numeroDeCliente",
+							"value": "672620"
+						},
+						{
+							"key": "fechaUno",
+							"value": "5-9-2022"
+						},
+						{
+							"key": "fechaDos",
+							"value": "5-10-2023"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modificacionCliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"numeroCliente\": 407140,\r\n        \"nombre\": \"Alejandro\",\r\n        \"apellido\": \"Rozas\",\r\n        \"tipoDocumento\": \"DNI\",\r\n        \"numeroDocumento\": \"32301114\",\r\n        \"mail\": \"arozas@gmail.com\",\r\n        \"tipoCliente\": \"individual\",\r\n        \"pais\": \"Argentina\",\r\n        \"ciudad\": \"Buenos Aires\",\r\n        \"telefono\": \"1131831276\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost/ReposProgramacionTresPHP/Parciales/PrimerParcial/?accion=modificarCliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ReposProgramacionTresPHP",
+						"Parciales",
+						"PrimerParcial",
+						""
+					],
+					"query": [
+						{
+							"key": "accion",
+							"value": "modificarCliente"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancelarReserva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text"
+						},
+						{
+							"key": "numeroCliente",
+							"value": "407140",
+							"type": "text"
+						},
+						{
+							"key": "IdReserva",
+							"value": "739112",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "cancelada",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/ReposProgramacionTresPHP/Parciales/PrimerParcial/?accion=cancelarReserva",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ReposProgramacionTresPHP",
+						"Parciales",
+						"PrimerParcial",
+						""
+					],
+					"query": [
+						{
+							"key": "accion",
+							"value": "cancelarReserva"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ajusteReserva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "IdReserva",
+							"value": "739112",
+							"type": "text"
+						},
+						{
+							"key": "motivo",
+							"value": "dinero",
+							"type": "text"
+						},
+						{
+							"key": "importe",
+							"value": "7000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/ReposProgramacionTresPHP/Parciales/PrimerParcial/?accion=ajusteReserva",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"ReposProgramacionTresPHP",
+						"Parciales",
+						"PrimerParcial",
+						""
+					],
+					"query": [
+						{
+							"key": "accion",
+							"value": "ajusteReserva"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

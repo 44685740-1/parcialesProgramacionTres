@@ -17,8 +17,6 @@
     }
 
     $cliente = new cliente();
-    $clienteDos = new cliente();
-    $clienteDos->constructorParametros(213546,"Carlos","Hulbert","dni",27893456,"carloshulber@gmail.com","individual","Venezula","Medellin",278964253);
     $cliente->constructorParametros($numeroCliente,$nombre,$apellido,$tipoDocumento,$numeroDocumento,$mail,$tipoCliente,$pais,$ciudad,$telefono);
 
     $retorno = $cliente->verificarCliente($cliente);

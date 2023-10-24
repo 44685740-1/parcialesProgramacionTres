@@ -8,13 +8,13 @@
         public $importeTotal;
         public $numeroCliente;
         public $tipoCliente;
-
+        public $estado;
         public function __construct()
         {
             
         }
 
-        public function constructorParametros($id,$fechaDeEntrada,$fechaDeSalida,$tipoHabitacion,$importeTotal,$numeroCliente,$tipoCliente){
+        public function constructorParametros($id,$fechaDeEntrada,$fechaDeSalida,$tipoHabitacion,$importeTotal,$numeroCliente,$tipoCliente,$estado){
             $this->id = $id;
             $this->fechaDeEntrada = $fechaDeEntrada;
             $this->fechaDeSalida = $fechaDeSalida;
@@ -22,6 +22,7 @@
             $this->importeTotal = $importeTotal;
             $this->numeroCliente = $numeroCliente;
             $this->tipoCliente = $tipoCliente;
+            $this->estado = $estado;
         }
 
         public static function acumuladorImporteHabitacionFecha($tipoHabitacion,$fecha){
@@ -111,5 +112,52 @@
                 }
             }
         }
+
+        public function insertarReserva($reserva){
+            $manejadorArchivos = new ManejadorArchivos("reservas.json");
+            $data = $manejadorArchivos->leer();
+            $nuevaReserva = ['id' => $reserva->id,'fechaDeEntrada' => $reserva->fechaDeEntrada, 'fehcaDeSalida' => $reserva->fechaDeSalida, 'tipoHabitacion' => $reserva->tipoHabitacion, 'importeTotalReserva' => $reserva->importeTotal, 'numeroCliente' => $reserva->numeroCliente, 'tipoCliente' => $reserva->tipoCliente, 'estado' => $reserva->estado];
+            $data[] = $nuevaReserva;
+            $manejadorArchivos->guardar($data);
+            $guardarImagen = new guardarImagen();
+            $guardarImagen->guardarImagenReserva($reserva);
+        }
+
+        public static function cambiarEstadoReserva($idReserva,$nuevoEstado){
+            $manejadorArchivos = new ManejadorArchivos("reservas.json");
+            $data = $manejadorArchivos->leer();
+            $respuesta = false;
+            foreach ($data as $index => $value) {
+                if ($value["id"] == $idReserva) {
+                    $respuesta = true;
+                    $data[$index]["estado"] = $nuevoEstado;
+                }
+            }
+            $manejadorArchivos->guardar($data);
+            return $respuesta;
+        }
+
+        public static function cambiarImporteReserva($idReserva,$nuevoImporte){
+            $manejadorArchivos = new ManejadorArchivos("reservas.json");
+            $data = $manejadorArchivos->leer();
+            $respuesta = false;
+            foreach ($data as $index => $value) {
+                if ($value["id"] == $idReserva) {
+                    $respuesta = true;
+                    $data[$index]["importeTotalReserva"] = $nuevoImporte;
+                }
+            }
+            $manejadorArchivos->guardar($data);
+            return $respuesta;
+        }
+
+        public static function insertarAjusteReserva($idReserva,$motivo,$nuevoImporte){
+            $manejadorArchivos = new ManejadorArchivos("ajustes.json");
+            $data = $manejadorArchivos->leer();
+            $nuevoAjuste = ['numeroReserva' => $idReserva, 'motivo' => $motivo, 'nuevoImporte' => $nuevoImporte];
+            $data[] = $nuevoAjuste;
+            $manejadorArchivos->guardar($data);
+        }
+
     }
 ?>

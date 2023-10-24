@@ -1,20 +1,22 @@
 {
-    "0": {
-        "id": 425950,
-        "fechaDeEntrada": "5-10-2023",
-        "fehcaDeSalida": "20-9-2023",
-        "tipoHabitacion": "simple",
-        "importeTotalReserva": "1000",
-        "numeroCliente": "687923",
-        "tipoCliente": "individual"
-    },
-    "2": {
-        "id": 526709,
+    "7": {
+        "id": 739112,
         "fechaDeEntrada": "5-9-2023",
         "fehcaDeSalida": "20-9-2023",
         "tipoHabitacion": "simple",
-        "importeTotalReserva": "1000",
-        "numeroCliente": "687987",
-        "tipoCliente": "individual"
+        "importeTotalReserva": "7000",
+        "numeroCliente": "407140",
+        "tipoCliente": "individual",
+        "estado": "cancelada"
+    },
+    "8": {
+        "id": 431502,
+        "fechaDeEntrada": "4-10-2023",
+        "fehcaDeSalida": "25-10-2023",
+        "tipoHabitacion": "doble",
+        "importeTotalReserva": "2000",
+        "numeroCliente": "672620",
+        "tipoCliente": "corporativo",
+        "estado": "activa"
     }
 }

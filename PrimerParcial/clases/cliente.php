@@ -44,29 +44,19 @@ class cliente
         $data = $manejadorArchivos->leer();
         $flagEncontrado = false;
         $respuesta = "CLIENTE INGRESADO";
-        foreach ($data as $index => $value) {
+        foreach ($data as $value) {
             if ($value["nombre"] == $cliente->nombre && $value["tipoCliente"] == $cliente->tipoCliente) {   
-                $data[$index]["numeroCliente"] = $cliente->numeroCliente;
-                $data[$index]["nombre"] = $cliente->nombre;
-                $data[$index]["apellido"] = $cliente->apellido;
-                $data[$index]["tipoDocumento"] = $cliente->tipoDocumento;
-                $data[$index]["numeroDocumento"] = $cliente->numeroDocumento;
-                $data[$index]["mail"] = $cliente->mail;
-                $data[$index]["tipoCliente"] = $cliente->tipoCliente;
-                $data[$index]["pais"] = $cliente->pais;
-                $data[$index]["ciudad"] = $cliente->ciudad;
-                $data[$index]["telefono"] = $cliente->apellido;
-                $respuesta = "CLIENTE MODIFICADO";
+                $respuesta = "CLIENTE YA REGISTRADO";
                 $flagEncontrado = true;
             }
         }
-        $manejadorArchivos->guardar($data);
+        
         if ($flagEncontrado == false) {
             $nuevoCliente = ['numeroCliente' => $cliente->numeroCliente, 'nombre' => $cliente->nombre, 'apellido' => $cliente->apellido, 'tipoDocumento' => $cliente->tipoDocumento, 'numeroDocumento' => $cliente->numeroDocumento, 'mail' => $cliente->mail, 'tipoCliente' => $cliente->tipoCliente, 'pais' => $cliente->pais, 'ciudad' => $cliente->ciudad, 'telefono' => $cliente->telefono];
             $data[] = $nuevoCliente;
             $manejadorArchivos->guardar($data);
         }
-        //$manejadorArchivos->guardar($data);
+
         return $respuesta;
     }
 
