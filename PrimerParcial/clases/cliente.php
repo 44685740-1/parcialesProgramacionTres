@@ -120,4 +120,22 @@ class cliente
 
         return $respuesta;
     }
+
+
+    public static function borrarCliente($numeroDocumento,$numeroCliente,$tipoCliente,$nuevoEstado){
+        $manejadorArchivos = new ManejadorArchivos("hoteles.json");
+        $data = $manejadorArchivos->leer();
+        $respuesta = false;
+        foreach ($data as  $index => $value){
+            if ($value["numeroCliente"] == $numeroCliente && $value["numeroDocumento"] == $numeroDocumento && $value["tipoCliente"] == $tipoCliente) {
+                $data[$index]["estado"] == $nuevoEstado;
+                $respuesta = true;
+            }
+        }
+
+        $manejadorArchivos->guardar($data);
+        return $respuesta;
+    }
+
+
 }

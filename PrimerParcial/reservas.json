@@ -4,7 +4,7 @@
         "fechaDeEntrada": "5-9-2023",
         "fehcaDeSalida": "20-9-2023",
         "tipoHabitacion": "simple",
-        "importeTotalReserva": "7000",
+        "importeTotalReserva": "3000",
         "numeroCliente": "407140",
         "tipoCliente": "individual",
         "estado": "cancelada"
@@ -15,6 +15,26 @@
         "fehcaDeSalida": "25-10-2023",
         "tipoHabitacion": "doble",
         "importeTotalReserva": "2000",
+        "numeroCliente": "672620",
+        "tipoCliente": "corporativo",
+        "estado": "activa"
+    },
+    "9": {
+        "id": 685564,
+        "fechaDeEntrada": "4-10-2023",
+        "fehcaDeSalida": "25-10-2023",
+        "tipoHabitacion": "simple",
+        "importeTotalReserva": "1500",
+        "numeroCliente": "672620",
+        "tipoCliente": "corporativo",
+        "estado": "cancelada"
+    },
+    "10": {
+        "id": 548332,
+        "fechaDeEntrada": "4-10-2023",
+        "fehcaDeSalida": "25-10-2023",
+        "tipoHabitacion": "simple",
+        "importeTotalReserva": "1500",
         "numeroCliente": "672620",
         "tipoCliente": "corporativo",
         "estado": "activa"

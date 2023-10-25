@@ -159,5 +159,61 @@
             $manejadorArchivos->guardar($data);
         }
 
+        public static function acumuladorImporteCancelado($fecha,$tipoCliente){
+            $manejadorArchivos = new ManejadorArchivos("reservas.json");
+            $data = $manejadorArchivos->leer();
+            $acumuladorImporteCancelado = 0;
+            foreach ($data as  $value) {
+                if ($value["fechaDeEntrada"] == $fecha && $value["tipoCliente"] == $tipoCliente && $value["estado"] == "cancelada") {
+                    $acumuladorImporteCancelado += $value["importeTotalReserva"];
+                }
+            }
+
+            return $acumuladorImporteCancelado;
+        }
+
+        public static function listadoReservasCanceladasNumeroCliente($numeroCliente){
+            $manejadorArchivos = new ManejadorArchivos("reservas.json");
+            $data = $manejadorArchivos->leer();
+            $reservasFiltradas = [];
+
+            foreach ($data as  $value) {
+                if ($value["numeroCliente"] == $numeroCliente && $value["estado"] == "cancelada") {
+                    $reservasFiltradas[] = $value;
+                }
+            }
+
+            return json_encode($reservasFiltradas);
+        }
+
+        public static function listadoReservasCanceladasTipoCliente($tipoCliente){
+            $manejadorArchivos = new ManejadorArchivos("reservas.json");
+            $data = $manejadorArchivos->leer();
+            $reservasFiltradas = [];
+
+            foreach ($data as  $value) {
+                if ($value["tipoCliente"] == $tipoCliente && $value["estado"] == "cancelada") {
+                    $reservasFiltradas[] = $value;
+                }
+            }
+
+            return json_encode($reservasFiltradas);
+        }
+
+        public static function listadoReservasCancelaciones($numeroCliente){
+            $manejadorArchivos = new ManejadorArchivos("reservas.json");
+            $data = $manejadorArchivos->leer();
+            $reservasFiltradas = [];
+
+            foreach ($data as  $value) {
+                if ($value["numeroCliente"] == $numeroCliente) {
+                    $reservasFiltradas[] = $value;
+                }
+            }
+
+            return json_encode($reservasFiltradas);
+        }
+
+
     }
 ?>

@@ -3,5 +3,10 @@
         "numeroReserva": "739112",
         "motivo": "dinero",
         "nuevoImporte": "7000"
+    },
+    {
+        "numeroReserva": "739112",
+        "motivo": "parcial",
+        "nuevoImporte": "3000"
     }
 ]

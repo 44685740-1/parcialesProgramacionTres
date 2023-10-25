@@ -15,6 +15,9 @@ if(isset($_GET['accion'])){
                 case 'consultarReservas':
                     include_once "./acciones/consultarReservas.php";
                     break;
+                case 'consultarReserva':
+                    include_once "./acciones/consultarReserva.php";
+                    break;
                 default:
                     echo json_encode(['error' => 'Parámetro "accion" no permitido']);
                     break;
@@ -49,6 +52,16 @@ if(isset($_GET['accion'])){
             switch ($_GET['accion']){
                 case 'modificarCliente':
                     include './acciones/modificacionCliente.php';
+                    break;
+                default:
+                    echo json_encode(['error' => 'Parámetro "accion" no permitido']);
+                    break;
+            }
+            break;
+        case 'DELETE':
+            switch ($_GET['accion']) {
+                case 'borrarCliente':
+                    include_once "./acciones/borrarCliente.php";
                     break;
                 default:
                     echo json_encode(['error' => 'Parámetro "accion" no permitido']);
