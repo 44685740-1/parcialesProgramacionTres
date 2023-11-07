@@ -459,6 +459,174 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "traerPedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "traerUnPedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedidos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearPedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigoMesa",
+							"value": "87945",
+							"type": "text"
+						},
+						{
+							"key": "dniMozo",
+							"value": "46978456",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "Servido",
+							"type": "text"
+						},
+						{
+							"key": "tiempoOrden",
+							"value": "00:50:00",
+							"type": "text"
+						},
+						{
+							"key": "tiempoMaximo",
+							"value": "00:60:00",
+							"type": "text"
+						},
+						{
+							"key": "tiempoEntrega",
+							"value": "00:40:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/crearPedido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"crearPedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ModificarPedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigoMesa",
+							"value": "54614",
+							"type": "text"
+						},
+						{
+							"key": "dniMozo",
+							"value": "4512378",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "Terminado",
+							"type": "text"
+						},
+						{
+							"key": "tiempoOrden",
+							"value": "00:30:00",
+							"type": "text"
+						},
+						{
+							"key": "tiempoMaximo",
+							"value": "00:40:00",
+							"type": "text"
+						},
+						{
+							"key": "tiempoEntrega",
+							"value": "00:30:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/modificarPedido/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"modificarPedido",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarPedido",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedido/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedido",
+						"2"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
