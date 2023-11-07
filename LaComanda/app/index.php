@@ -111,7 +111,7 @@ $app->delete('/usuario/{id}', function (Request $request, Response $response, ar
     $id = $args['id'];
     $usuarioController = new usuarioController();
     $retorno = $usuarioController->borrarUsuario($id);
-    $payload = json_encode(array('Respueta Eliminar' => "$retorno"));
+    $payload = json_encode(array('Respuesta Eliminar' => "$retorno"));
     $response->getBody()->write($payload);
     return $response->withHeader('Content-Type', 'application/json');
 });
@@ -185,7 +185,7 @@ $app->delete('/mesa/{id}', function (Request $request, Response $response, array
     $id = $args['id'];
     $mesaController = new mesaController();
     $retorno = $mesaController->borrarMesa($id);
-    $payload = json_encode(array('Respueta Eliminar' => "$retorno"));
+    $payload = json_encode(array('Respuesta Eliminar' => "$retorno"));
     $response->getBody()->write($payload);
     return $response->withHeader('Content-Type', 'application/json');
 });
@@ -260,25 +260,27 @@ $app->delete('/producto/{id}', function (Request $request, Response $response, a
     $id = $args['id'];
     $productoController = new productoController();
     $retorno = $productoController->borrarProducto($id);
-    $payload = json_encode(array('Respueta Eliminar' => "$retorno"));
+    $payload = json_encode(array('Respuesta Eliminar' => "$retorno"));
     $response->getBody()->write($payload);
     return $response->withHeader('Content-Type', 'application/json');
 });
 
-//pedidos falta hacer
+//pedidos 
 
 $app->post('/crearPedido', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
-    $nombre = $data['nombre'];
-    $precio = $data['precio'];
-    $tiempoElaboracion = $data['tiempoElaboracion'];
-    $sector = $data['sector'];
+    $codigoMesa = $data['codigoMesa'];
+    $dniMozo = $data['dniMozo'];
+    $estado = $data['estado'];
+    $tiempoOrden = $data['tiempoOrden'];
+    $tiempoMaximo = $data['tiempoMaximo'];
+    $tiempoEntrega = $data['tiempoEntrega'];
 
-    $producto = new producto();
-    $producto->constructorParametros($nombre,$precio,$tiempoElaboracion,$sector);
+    $pedido = new pedido();
+    $pedido->constructorParametros($codigoMesa,$dniMozo,$estado,$tiempoOrden,$tiempoMaximo,$tiempoEntrega);
 
-    $productoController = new productoController();
-    $respuesta = $productoController->InsertarProducto($nombre,$precio,$tiempoElaboracion,$sector);
+    $pedidosController = new pedidosController();
+    $respuesta = $pedidosController->InsertarPedido($codigoMesa,$dniMozo,$estado,$tiempoOrden,$tiempoMaximo,$tiempoEntrega);
     //retorno el id del usuario Ingresado
     $respuestaJson = json_encode(['resultado' => $respuesta]);
     $payload = json_encode($respuestaJson);
@@ -288,9 +290,9 @@ $app->post('/crearPedido', function (Request $request, Response $response) {
 
 
 $app->get('/pedidos', function (Request $request, Response $response) {
-    $productosController = new productoController();
-    $listaProductos = $productosController->listarProductos();
-    $payload = json_encode($listaProductos);
+    $pedidosController = new pedidosController();
+    $listaPedidos = $pedidosController->listarPedidos();
+    $payload = json_encode($listaPedidos);
     $response->getBody()->write($payload);
     return $response->withHeader('Content-Type', 'application/json');
 });
@@ -298,35 +300,37 @@ $app->get('/pedidos', function (Request $request, Response $response) {
 
 $app->get('/pedidos/{id}', function (Request $request, Response $response, array $args) {
     $id = $args['id'];
-    $producto = producto::TraerUnProducto($id);
-    if ($producto != false) {
-        $payload = json_encode($producto);
+    $pedido = pedido::TraerUnPedido($id);
+    if ($pedido != false) {
+        $payload = json_encode($pedido);
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
     } else {
-        $mensajeError = json_encode(array('Error' => 'Producto No encontrado'));
+        $mensajeError = json_encode(array('Error' => 'Pedido No encontrado'));
         $response->getBody()->write($mensajeError);
         return $response->withHeader('Content-Type', 'application/json');
     }
 });
 
-$app->post('/modificarPedidos/{id}', function (Request $request, Response $response,array $args) {
+$app->post('/modificarPedido/{id}', function (Request $request, Response $response,array $args) {
     $data = $request->getParsedBody();
     $id = $args['id'];
-    $nombre = $data['nombre'];
-    $precio = $data['precio'];
-    $tiempoElaboracion = $data['tiempoElaboracion'];
-    $sector = $data['sector'];
+    $codigoMesa = $data['codigoMesa'];
+    $dniMozo = $data['dniMozo'];
+    $estado = $data['estado'];
+    $tiempoOrden = $data['tiempoOrden'];
+    $tiempoMaximo = $data['tiempoMaximo'];
+    $tiempoEntrega = $data['tiempoEntrega'];
     
-    $producto = producto::TraerUnProducto($id);
-    if ($producto != false) {
-        $productoController = new productoController();
-        $resultado = $productoController->modificarProducto($id,$nombre,$precio,$tiempoElaboracion,$sector);
+    $pedido = pedido::TraerUnPedido($id);
+    if ($pedido != false) {
+        $pedidoController = new pedidosController();
+        $resultado = $pedidoController->modificarPedido($id,$codigoMesa,$dniMozo,$estado,$tiempoOrden,$tiempoMaximo,$tiempoEntrega);
         $payload = json_encode(array("Resultado Modificar" => $resultado));
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
     } else {
-        $mensajeError = json_encode(array('Error' => 'Producto No encontrado'));
+        $mensajeError = json_encode(array('Error' => 'Pedido No encontrado'));
         $response->getBody()->write($mensajeError);
         return $response->withHeader('Content-Type', 'application/json');
     }
@@ -334,9 +338,9 @@ $app->post('/modificarPedidos/{id}', function (Request $request, Response $respo
 
 $app->delete('/pedido/{id}', function (Request $request, Response $response, array $args) {
     $id = $args['id'];
-    $productoController = new productoController();
-    $retorno = $productoController->borrarProducto($id);
-    $payload = json_encode(array('Respueta Eliminar' => "$retorno"));
+    $pedidoController = new pedidosController();
+    $retorno = $pedidoController->borrarPedido($id);
+    $payload = json_encode(array('Respuesta Eliminar' => "$retorno"));
     $response->getBody()->write($payload);
     return $response->withHeader('Content-Type', 'application/json');
 });
