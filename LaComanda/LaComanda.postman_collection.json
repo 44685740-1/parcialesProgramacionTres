@@ -12,14 +12,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/usuarios",
+					"raw": "http://localhost:8080/usuarios/traerTodos",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"usuarios"
+						"usuarios",
+						"traerTodos"
 					]
 				}
 			},
@@ -31,7 +32,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/usuarios/1",
+					"raw": "http://localhost:8080/usuarios/traerUno/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -39,7 +40,8 @@
 					"port": "8080",
 					"path": [
 						"usuarios",
-						"1"
+						"traerUno",
+						"5"
 					]
 				}
 			},
@@ -82,18 +84,29 @@
 							"key": "sector",
 							"value": "Mozo",
 							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "elgaturro",
+							"type": "text"
+						},
+						{
+							"key": "mail",
+							"value": "ahuitzcaracciolo@gmail.com",
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/crearUsuario",
+					"raw": "http://localhost:8080/usuarios/crear",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"crearUsuario"
+						"usuarios",
+						"crear"
 					]
 				}
 			},
@@ -136,19 +149,30 @@
 							"key": "sector",
 							"value": "Cerveza",
 							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "elgaturro",
+							"type": "text"
+						},
+						{
+							"key": "mail",
+							"value": "ahuitzcaracciolo@gmail.com",
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/modificarUsuario/2",
+					"raw": "http://localhost:8080/usuarios/modificar/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"modificarUsuario",
-						"2"
+						"usuarios",
+						"modificar",
+						"6"
 					]
 				}
 			},
@@ -160,15 +184,16 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/usuario/2",
+					"raw": "http://localhost:8080/usuarios/eliminar/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"usuario",
-						"2"
+						"usuarios",
+						"eliminar",
+						"6"
 					]
 				}
 			},
@@ -180,14 +205,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/mesas",
+					"raw": "http://localhost:8080/mesas/traerTodas",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"mesas"
+						"mesas",
+						"traerTodas"
 					]
 				}
 			},
@@ -199,7 +225,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/mesas/3",
+					"raw": "http://localhost:8080/mesas/traerUna/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -207,7 +233,8 @@
 					"port": "8080",
 					"path": [
 						"mesas",
-						"3"
+						"traerUna",
+						"1"
 					]
 				}
 			},
@@ -239,14 +266,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/crearMesa",
+					"raw": "http://localhost:8080/mesas/crear",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"crearMesa"
+						"mesas",
+						"crear"
 					]
 				}
 			},
@@ -278,14 +306,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/modificarMesa/3",
+					"raw": "http://localhost:8080/mesas/modificar/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"modificarMesa",
+						"mesas",
+						"modificar",
 						"3"
 					]
 				}
@@ -298,15 +327,16 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/mesa/2",
+					"raw": "http://localhost:8080/mesas/eliminar/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"mesa",
-						"2"
+						"mesas",
+						"eliminar",
+						"4"
 					]
 				}
 			},
@@ -318,14 +348,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/productos",
+					"raw": "http://localhost:8080/productos/traerTodos",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"productos"
+						"productos",
+						"traerTodos"
 					]
 				}
 			},
@@ -337,7 +368,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/productos/2",
+					"raw": "http://localhost:8080/productos/traerUno/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -345,7 +376,8 @@
 					"port": "8080",
 					"path": [
 						"productos",
-						"2"
+						"traerUno",
+						"4"
 					]
 				}
 			},
@@ -382,14 +414,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/crearProducto",
+					"raw": "http://localhost:8080/productos/crear",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"crearProducto"
+						"productos",
+						"crear"
 					]
 				}
 			},
@@ -426,15 +459,16 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/modificarProducto/2",
+					"raw": "http://localhost:8080/productos/modificar/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"modificarProducto",
-						"2"
+						"productos",
+						"modificar",
+						"4"
 					]
 				}
 			},
@@ -446,15 +480,16 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/producto/2",
+					"raw": "http://localhost:8080/productos/eliminar/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"producto",
-						"2"
+						"productos",
+						"eliminar",
+						"4"
 					]
 				}
 			},
@@ -466,14 +501,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/pedidos",
+					"raw": "http://localhost:8080/pedidos/traerTodos",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"pedidos"
+						"pedidos",
+						"traerTodos"
 					]
 				}
 			},
@@ -485,7 +521,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/pedidos/2",
+					"raw": "http://localhost:8080/pedidos/traerUno/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -493,7 +529,8 @@
 					"port": "8080",
 					"path": [
 						"pedidos",
-						"2"
+						"traerUno",
+						"3"
 					]
 				}
 			},
@@ -540,14 +577,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/crearPedido",
+					"raw": "http://localhost:8080/pedidos/crear",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"crearPedido"
+						"pedidos",
+						"crear"
 					]
 				}
 			},
@@ -594,14 +632,15 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/modificarPedido/3",
+					"raw": "http://localhost:8080/pedidos/modificar/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"modificarPedido",
+						"pedidos",
+						"modificar",
 						"3"
 					]
 				}
@@ -614,15 +653,16 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/pedido/2",
+					"raw": "http://localhost:8080/pedidos/eliminar/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"pedido",
-						"2"
+						"pedidos",
+						"eliminar",
+						"3"
 					]
 				}
 			},
