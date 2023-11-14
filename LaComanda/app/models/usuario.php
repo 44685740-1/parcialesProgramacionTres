@@ -74,6 +74,36 @@ class usuario{
         return $usuarioBuscado;
     }
 
+    public static function TraerUnUsuarioMailClave($mail,$clave){
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT id, nombre, apellido, dni, estado_laboral as 'estadoLaboral', edad , sector , clave , mail
+        FROM `usuarios` 
+        WHERE mail = '$mail' AND clave = '$clave'");
+        $consulta->execute();
+        $usuarioBuscado = $consulta->fetchObject("usuario");
+        return $usuarioBuscado;
+    }
+
+    // public static function TraerUnUsuarioMailClave($mail, $clave) {
+    //     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    
+    //     // Use placeholders in the query
+    //     $consulta = $objetoAccesoDato->RetornarConsulta("SELECT id, nombre, apellido, dni, estado_laboral as 'estadoLaboral', edad, sector, clave, mail
+    //         FROM `usuarios` 
+    //         WHERE mail = :mail AND clave = :clave");
+    
+    //     // Bind the values to the placeholders
+    //     $consulta->bindValue(':mail', $mail, PDO::PARAM_STR);
+    //     $consulta->bindValue(':clave', $clave, PDO::PARAM_STR);
+    
+    //     $consulta->execute();
+    
+    //     // Fetch the result as an object
+    //     $usuarioBuscado = $consulta->fetchObject("usuario");
+    
+    //     return $usuarioBuscado;
+    // }
+
     public function modificarUsuario(){
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("UPDATE `usuarios` 

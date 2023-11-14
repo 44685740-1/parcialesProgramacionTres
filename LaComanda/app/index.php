@@ -47,7 +47,13 @@ $app->group('/usuarios', function (RouteCollectorProxy $group) {
     $group->get('/traerUno/{id}', \usuarioController::class . ':traerUnUsuario');
     $group->post('/modificar/{id}', \usuarioController::class . ':modificarUnUsuario');
     $group->delete('/eliminar/{id}', \usuarioController::class . ':eliminarUnUsuario');
-})->add(\Logger::class . ':verificarParametrosVaciosUsuario'); 
+})->add(\Logger::class . ':verificarParametrosVaciosUsuario')
+->add(\usuarioController::class . ':verificarMailClaveUsuarioAbmMw'); 
+
+//Login de Usuarios
+$app->post('/LoggearUsuario', [\UsuarioController::class, 'LoggearUsuario'])
+->add(\Logger::class . ':verificarParametrosVaciosLoginUsuario');
+
 
 //mesas
 $app->group('/mesas', function (RouteCollectorProxy $group) {
