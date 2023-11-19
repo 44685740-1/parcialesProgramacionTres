@@ -1,6 +1,8 @@
 <?php
 
 use Slim\Psr7\Response;
+require_once "./utils/AutentificadorJWT.php";
+
 class Logger
 {
 
@@ -81,5 +83,25 @@ class Logger
         }
 
         return $handler->handle($request);
+    }
+
+    public function LoggearUsuario($request,$response){
+        $params = $request->getParsedBody();
+        $mail = $params["mail"];
+        $clave = $params["clave"];
+
+        $usuario = usuario::TraerUnUsuarioMailClave($mail,$clave);
+
+        if ($usuario != null) {
+            $data = JwtUtil::CrearToken($usuario);
+            $response = $response->withStatus(200);
+            $payload = json_encode(array("Datos usuario" => $data));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json');
+        } else {
+            $payload = json_encode(array("Respuesta" => "No existe el Usuario"));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json');
+        }
     }
 }

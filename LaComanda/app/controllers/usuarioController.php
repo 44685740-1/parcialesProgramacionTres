@@ -184,16 +184,27 @@ class usuarioController
         }
     }
 
+    public function eliminarUnUsuario($request, $response, array $args)
+    {
+        $id = $args['id'];
+        $usuarioController = new usuarioController();
+        $retorno = $usuarioController->borrarUsuario($id);
+        $payload = json_encode(array('Respuesta Eliminar' => "$retorno"));
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
+    
     public static function parsearCsvToUsuarios($archivoRutaCSV)
     {
         $listaUsuarios = [];
-        $esPrimeraIteracion = true; 
+        $esPrimeraIteracion = true;
 
         if (($archivo = fopen($archivoRutaCSV, 'r')) !== false) {
             while (($data = fgetcsv($archivo, 1000, ',')) !== false) {
                 if ($esPrimeraIteracion) {
                     $esPrimeraIteracion = false;
-                    continue; 
+                    continue;
                 }
 
                 $usuario = new usuario();
@@ -216,20 +227,27 @@ class usuarioController
         return $listaUsuarios;
     }
 
-    public function CargarUsuariosCSV($request,$response)
+    public function CargarUsuariosCSV($request, $response)
     {
         $archivo = $request->getUploadedFiles()["usuariosCSV"];
-        $nombre = $archivo->getClientFileName();
-        $destino = "./db/" . $nombre;
-        $archivo->moveTo($destino);
-
-        usuario::CargarUsuariosCSV($destino);
-        $payload = json_encode(array("Respuesta" => "Usuarios cargados a la base de datos"));
-        $response->getBody()->write($payload);
-        return $response->withHeader('Content-Type', 'application/json')->withStatus(201);
+        if ($archivo){
+            $nombre = $archivo->getClientFileName();
+            $destino = "./db/" . $nombre;
+            $archivo->moveTo($destino);
+    
+            usuario::CargarUsuariosCSV($destino);
+            $payload = json_encode(array("Respuesta" => "Usuarios cargados a la base de datos"));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json')->withStatus(201);
+        } else {
+            $payload = json_encode(array("Respuesta" => "El Archivo no esta"));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json')->withStatus(201);
+        }
+       
     }
 
-    public function DescargaUsuariosCSV($request,$response)
+    public function DescargaUsuariosCSV($request, $response)
     {
         $usuarios = usuario::traerTodosLosUsuariosArray();
         usuario::DescargaUsuariosCSV($usuarios);

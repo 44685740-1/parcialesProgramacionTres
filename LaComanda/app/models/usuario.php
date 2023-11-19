@@ -10,7 +10,7 @@ class usuario
     public $edad;
     public $sector;
     public $mail;
-    public $clave;
+    public $clave;  
 
     public function __construct()
     {
