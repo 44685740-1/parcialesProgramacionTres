@@ -58,7 +58,7 @@ class Logger
         $params = $request->getParsedBody();
         $requestType = $request->getMethod();
         if ($requestType == 'POST') {
-            if (empty($params['codigoMesa']) || empty($params['dniMozo']) || empty($params["estado"]) || empty($params["tiempoOrden"]) || empty($params["tiempoMaximo"]) || empty($params["tiempoEntrega"])) {
+            if (empty($params['codigoPedido']) || empty($params['productoId']) || empty($params["mesaId"]) || empty($params["usuarioId"]) || empty($params["estado"]) || empty($params["tiempoOrden"]) || empty($params["tiempoMaximo"]) || empty($params["tiempoEntrega"])) {
                 $response = new Response();
                 $response->getBody()->write(json_encode(['Error' => 'Parametros Vacios']));
                 return $response->withHeader('Content-Type', 'application/json')->withStatus(400);

@@ -30,7 +30,6 @@ $app = AppFactory::create();
 
 //comando de consola para abrilo en el puerto 8080
 //php -S localhost:8080 -t app
-//usuarios : añadir mail, clave
 
 
 // Add error middleware
@@ -47,8 +46,8 @@ $app->group('/usuarios', function (RouteCollectorProxy $group) {
     $group->get('/traerUno/{id}', \usuarioController::class . ':traerUnUsuario');
     $group->post('/modificar/{id}', \usuarioController::class . ':modificarUnUsuario');
     $group->delete('/eliminar/{id}', \usuarioController::class . ':eliminarUnUsuario');
-})->add(\Logger::class . ':verificarParametrosVaciosUsuario')
-->add(\usuarioController::class . ':verificarMailClaveUsuarioAbmMw'); 
+})->add(\Logger::class . ':verificarParametrosVaciosUsuario');
+//->add(\usuarioController::class . ':verificarMailClaveUsuarioAbmMw'); 
 
 //Login de Usuarios
 $app->post('/LoggearUsuario', [\UsuarioController::class, 'LoggearUsuario'])
@@ -83,5 +82,11 @@ $app->group('/pedidos', function (RouteCollectorProxy $group) {
     $group->delete('/eliminar/{id}', \pedidosController::class . ':eliminarUnPedido');
 })->add(\Logger::class . ':verificarParametrosVaciosPedido'); 
 
+
+//CSV
+$app->group('/CSV', function (RouteCollectorProxy $group) {
+    $group->post("/cargarUsuarios", \usuarioController::class . ':CargarUsuariosCSV');
+    $group->post("/descargarUsuarios", \usuarioController::class . ':DescargaUsuariosCSV');
+});
 
 $app->run();
