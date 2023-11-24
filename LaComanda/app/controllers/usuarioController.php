@@ -59,57 +59,7 @@ class usuarioController
         return $retorno;
     }
 
-    public function buscarUsuarioPorMailClave($mail, $clave)
-    {
-        $usuario = usuario::TraerUnUsuarioMailClave($mail, $clave);
-        if ($usuario === false) { // Validamos que exista y si no mostramos un error
-            $retorno =  ['error' => 'No existe ese Usuario'];
-        } else {
-            $retorno = ['Bienvenido' => "{$usuario->nombre} {$usuario->apellido}"];;
-        }
-        return $retorno;
-    }
-
-    public function LoggearUsuario($request, $response)
-    {
-        $data = $request->getParsedBody();
-        $nombre = $data["nombre"];
-        $apellido = $data["apellido"];
-        $mail = $data['mail'];
-        $clave = $data['clave'];
-
-        $usuarioController = new usuarioController();
-        $retorno = $usuarioController->buscarUsuarioPorMailClave($mail, $clave);
-        $payload = $payload = json_encode(array($retorno));;
-        $response->getBody()->write($payload);
-        return $response->withHeader('Content-Type', 'application/json');
-    }
-
-    //modificar para chequear credenciales del usuario que manda la request en vez de 
-    //e mail y usuario que se da de alta 
-    public function verificarMailClaveUsuarioAbmMw($request, $handler): Response
-    {
-        $data = $request->getParsedBody();
-        $nombre = $data["nombre"];
-        $apellido = $data["apellido"];
-        $mail = $data['mail'];
-        $clave = $data['clave'];
-
-        $usuarioController = new usuarioController();
-        $retorno = $usuarioController->buscarUsuarioPorMailClave($mail, $clave);
-
-        if ($retorno == ['error' => 'No existe ese Usuario']) {
-            $response = new Response();
-            $response->getBody()->write(json_encode(['Error' => 'Usuario No Registrado']));
-            return $response->withHeader('Content-Type', 'application/json')->withStatus(400);
-        }
-
-        return $handler->handle($request);
-    }
-
-
     //abm de usuarios directo con las request de slim
-
     public function CrearUsuario($request, $response)
     {
         $data = $request->getParsedBody();
@@ -121,11 +71,12 @@ class usuarioController
         $sector = $data['sector'];
         $clave = $data['clave'];
         $mail = $data['mail'];
+        $claveHash = password_hash($clave,PASSWORD_DEFAULT);
         $usuario = new usuario();
-        $usuario->constructorParametros($nombre, $apellido, $dni, $estadoLaboral, $edad, $sector, $clave, $mail);
+        $usuario->constructorParametros($nombre, $apellido, $dni, $estadoLaboral, $edad, $sector, $claveHash, $mail);
 
         $usuarioController = new usuarioController();
-        $respuesta = $usuarioController->InsertarUsuario($nombre, $apellido, $dni, $estadoLaboral, $edad, $sector, $clave, $mail);
+        $respuesta = $usuarioController->InsertarUsuario($nombre, $apellido, $dni, $estadoLaboral, $edad, $sector, $claveHash, $mail);
         //retorno el id del usuario Ingresado
         $respuestaJson = json_encode(['resultado' => $respuesta]);
         $payload = json_encode($respuestaJson);
@@ -169,11 +120,12 @@ class usuarioController
         $sector = $data['sector'];
         $clave = $data['clave'];
         $mail = $data['mail'];
+        $claveHash = password_hash($clave,PASSWORD_DEFAULT);
 
         $usuario = usuario::TraerUnUsuario($id);
         if ($usuario != false) {
             $usuarioController = new usuarioController();
-            $resultado = $usuarioController->modificarUsuario($id, $nombre, $apellido, $dni, $estadoLaboral, $edad, $sector, $clave, $mail);
+            $resultado = $usuarioController->modificarUsuario($id, $nombre, $apellido, $dni, $estadoLaboral, $edad, $sector, $claveHash, $mail);
             $payload = json_encode(array("Resultado Modificar" => $resultado));
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');

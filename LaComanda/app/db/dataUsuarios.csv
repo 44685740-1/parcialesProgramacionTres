@@ -1,9 +1,5 @@
-nombre,apellido,dni,estadoLaboral,edad,sector,clave,mail
-Nichols,Iacomettii,2147483647,Cadillac28Beautyniacomettii0niacomettii0@stumbleupon.com
-Nerita,Brewers,2147483647,Audi49Automotivenbrewers1nbrewers1@ihg.com
-Teressa,Juzek,2147483647,Rolls-Royce21Gardentjuzek2tjuzek2@fc2.com
-Ahuitz,Caracciolo,95933062,En negro32Mozoelgaturroahuitzcaracciolo@gmail.com
-Ahuitz,Caracciolo,95933062,En negro32Mozoelgaturroahuitzcaracciolo@gmail.com
-Nichols,Iacomettii,2147483647,Cadillac28Beautyniacomettii0niacomettii0@stumbleupon.com
-Nerita,Brewers,2147483647,Audi49Automotivenbrewers1nbrewers1@ihg.com
-Teressa,Juzek,2147483647,Rolls-Royce21Gardentjuzek2tjuzek2@fc2.com
+nombre,apellido,dni,estadoLaboral,edad,sector,mail,clave
+Ahuitz,Caracciolo,95933062,En negro,32,Mozo,ahuitzcaracciolo@gmail.com,$2y$10$J3w/CiJbUJos0gx7mIW9/um46FE8HdkS6PjUdow9cqZoxBakMCoau
+Nichols,Iacomettii,2147483647,Cadillac,28,Beauty,niacomettii0@stumbleupon.com,niacomettii0
+Nerita,Brewers,2147483647,Audi,49,Automotive,nbrewers1@ihg.com,nbrewers1
+Teressa,Juzek,2147483647,Rolls-Royce,21,Garden,tjuzek2@fc2.com,tjuzek2

@@ -88,12 +88,23 @@ class usuario
         return $usuarioBuscado;
     }
 
-    public static function TraerUnUsuarioMailClave($mail, $clave)
+    // public static function TraerUnUsuarioMailClave($mail, $clave)
+    // {
+    //     $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+    //     $consulta = $objetoAccesoDato->RetornarConsulta("SELECT id, nombre, apellido, dni, estado_laboral as 'estadoLaboral', edad , sector , clave , mail
+    //     FROM `usuarios` 
+    //     WHERE mail = '$mail' AND clave = '$clave'");
+    //     $consulta->execute();
+    //     $usuarioBuscado = $consulta->fetchObject("usuario");
+    //     return $usuarioBuscado;
+    // }
+
+    public static function TraerUnUsuarioMail($mail)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("SELECT id, nombre, apellido, dni, estado_laboral as 'estadoLaboral', edad , sector , clave , mail
         FROM `usuarios` 
-        WHERE mail = '$mail' AND clave = '$clave'");
+        WHERE mail = '$mail'");
         $consulta->execute();
         $usuarioBuscado = $consulta->fetchObject("usuario");
         return $usuarioBuscado;
@@ -176,9 +187,9 @@ class usuario
         if (is_array($usuarios)) {
             $archivo = fopen("./db/dataUsuarios.csv", "w");
             if ($archivo != FALSE) {
-                fputs($archivo, 'nombre,apellido,dni,estadoLaboral,edad,sector,clave,mail' . PHP_EOL);
+                fputs($archivo, 'nombre,apellido,dni,estadoLaboral,edad,sector,mail,clave' . PHP_EOL);
                 foreach ($usuarios as $v) {
-                    fputs($archivo, $v["nombre"] . "," . $v["apellido"] . "," . $v["dni"] . "," . $v["estadoLaboral"] . $v["edad"] . $v["sector"] . $v["clave"] . $v["mail"]. PHP_EOL);
+                    fputs($archivo, $v["nombre"] . "," . $v["apellido"] . "," . $v["dni"] . "," . $v["estadoLaboral"] . "," . $v["edad"] . "," . $v["sector"] . "," . $v["mail"] . "," . $v["clave"]. PHP_EOL);
                 }
                 fclose($archivo);
             }

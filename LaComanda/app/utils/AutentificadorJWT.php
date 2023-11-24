@@ -6,14 +6,29 @@ class JwtUtil
     private static $claveSecreta = 'ahuitz';
     private static $tipoEncriptacion = 'HS256';
 
-    public static function CrearToken($datos)
+
+    // public static function CrearToken($datos)
+    // {
+    //     $ahora = time();
+    //     $payload = array(
+    //         'iat' => $ahora,
+    //         'exp' => $ahora + (600000),
+    //         'aud' => self::Aud(),
+    //         'data' => $datos,
+    //     );
+    //     return JWT::encode($payload, self::$claveSecreta, self::$tipoEncriptacion);
+    // }
+
+    public static function CrearToken($id,$nombre,$mail)
     {
         $ahora = time();
         $payload = array(
             'iat' => $ahora,
             'exp' => $ahora + (600000),
             'aud' => self::Aud(),
-            'data' => $datos,
+            'Id' => $id,
+            'Nombre' => $nombre,
+            'Mail' => $mail
         );
         return JWT::encode($payload, self::$claveSecreta, self::$tipoEncriptacion);
     }

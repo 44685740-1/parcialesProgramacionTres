@@ -89,11 +89,10 @@ class Logger
         $params = $request->getParsedBody();
         $mail = $params["mail"];
         $clave = $params["clave"];
+        $usuario = usuario::TraerUnUsuarioMail($mail);
 
-        $usuario = usuario::TraerUnUsuarioMailClave($mail,$clave);
-
-        if ($usuario != null) {
-            $data = JwtUtil::CrearToken($usuario);
+        if ($usuario != null && password_verify($clave,$usuario->clave)) {
+            $data = JwtUtil::CrearToken($usuario->id,$usuario->nombre,$usuario->mail);
             $response = $response->withStatus(200);
             $payload = json_encode(array("Datos usuario" => $data));
             $response->getBody()->write($payload);
