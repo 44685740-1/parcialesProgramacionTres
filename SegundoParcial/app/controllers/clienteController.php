@@ -133,7 +133,36 @@ class clienteController{
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
+    }
 
+    public function modificarClienteRequest($request, $response) 
+    {   
+        $rawData = file_get_contents("php://input");
+        $data = json_decode($rawData, true);
+        $numeroCliente = $data["numeroCliente"];
+        $nombre = $data['nombre'];
+        $apellido = $data['apellido'];
+        $tipoDocumento = $data["tipoDocumento"];
+        $numeroDocumento = $data["numeroDocumento"];
+        $mail = $data["mail"];
+        $tipoCliente = $data['tipoCliente'];
+        $pais = $data["pais"];
+        $ciudad = $data["ciudad"];
+        $telefono = $data["telefono"];
+
+        $clienteBuscado = clienteController::buscarClienteNumeroTipoCliente($numeroCliente,$tipoCliente);
+
+        if ($clienteBuscado != null) {
+            $clienteController = new clienteController();
+            $resultado = $clienteController->modificarCliente($clienteBuscado->id,$numeroCliente,$nombre,$apellido,$tipoDocumento,$numeroDocumento,$mail,$tipoCliente,$pais,$ciudad,$telefono);
+            $payload = json_encode(array("Resultado Modificar" => $resultado));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json');
+        } else{
+            $payload = json_encode(array("Respuesta" => "Tipo Cliente Incorrecto o Numero de Cliente Incorrecto"));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json');
+        }
     }
 }
 ?>

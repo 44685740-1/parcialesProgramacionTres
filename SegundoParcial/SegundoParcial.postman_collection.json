@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "199c6825-302d-45f3-9d43-098a1696d416",
+		"name": "SegundoParcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29743146"
+	},
+	"item": [
+		{
+			"name": "clienteAlta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "ahuitz",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "briceno",
+							"type": "text"
+						},
+						{
+							"key": "tipoDocumento",
+							"value": "dni",
+							"type": "text"
+						},
+						{
+							"key": "numeroDocumento",
+							"value": "44685740",
+							"type": "text"
+						},
+						{
+							"key": "mail",
+							"value": "ahuitzcaracciolo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text"
+						},
+						{
+							"key": "pais",
+							"value": "argentina",
+							"type": "text"
+						},
+						{
+							"key": "ciudad",
+							"value": "caba",
+							"type": "text"
+						},
+						{
+							"key": "telefono",
+							"value": "1131831276",
+							"type": "text"
+						},
+						{
+							"key": "fotoPerfil",
+							"type": "file",
+							"src": "/C:/Users/ahuit/OneDrive/Escritorio/cbc/perfilwpp.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/alta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ClienteConsultar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text"
+						},
+						{
+							"key": "numeroCliente",
+							"value": "872650",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReservaAlta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text"
+						},
+						{
+							"key": "numeroCliente",
+							"value": "872650",
+							"type": "text"
+						},
+						{
+							"key": "fechaDeEntrada",
+							"value": "2023-05-10",
+							"type": "text"
+						},
+						{
+							"key": "fechaDeSalida",
+							"value": "2023-05-20",
+							"type": "text"
+						},
+						{
+							"key": "tipoHabitacion",
+							"value": "simple",
+							"type": "text"
+						},
+						{
+							"key": "importeTotalReserva",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "activa",
+							"type": "text"
+						},
+						{
+							"key": "fotoReserva",
+							"type": "file",
+							"src": "/C:/Users/ahuit/OneDrive/Escritorio/cbc/perfil.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/alta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"alta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultarReservasPuntoA)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fecha",
+							"value": "2023-05-10",
+							"type": "text"
+						},
+						{
+							"key": "tipoHabitacion",
+							"value": "simple",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarRservasPuntoB)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "numeroCliente",
+							"value": "872650",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarReservasPuntoD)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoHabitacion",
+							"value": "simple",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarReservasPuntoC)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fechaUno",
+							"value": "2023-05-10",
+							"type": "text"
+						},
+						{
+							"key": "fechaDos",
+							"value": "2023-07-10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ModificarCliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"numeroCliente\": 872650,\r\n        \"nombre\": \"Alejandro\",\r\n        \"apellido\": \"Rozas\",\r\n        \"tipoDocumento\": \"DNI\",\r\n        \"numeroDocumento\": \"32301114\",\r\n        \"mail\": \"ahuitz@gmail.com\",\r\n        \"tipoCliente\": \"individual\",\r\n        \"pais\": \"Argentina\",\r\n        \"ciudad\": \"Buenos Aires\",\r\n        \"telefono\": \"1131831276\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/modificar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"modificar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CancelarReserva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text"
+						},
+						{
+							"key": "numeroCliente",
+							"value": "872650",
+							"type": "text"
+						},
+						{
+							"key": "reservaId",
+							"value": "15",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/cancelar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"cancelar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AjusteReserva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "numeroReserva",
+							"value": "16",
+							"type": "text"
+						},
+						{
+							"key": "motivo",
+							"value": "parcial",
+							"type": "text"
+						},
+						{
+							"key": "nuevoImporte",
+							"value": "1000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/ajuste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"ajuste"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

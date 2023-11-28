@@ -14,6 +14,13 @@ require __DIR__ . '/../vendor/autoload.php';
 require_once "./models/cliente.php";
 require_once "./controllers/clienteController.php";
 
+require_once "./models/reserva.php";
+require_once "./controllers/reservaController.php";
+
+require_once "./models/ajuste.php";
+require_once "./controllers/ajusteController.php";
+
+
 // Instantiate App
 $app = AppFactory::create();
 
@@ -30,6 +37,17 @@ $app->addBodyParsingMiddleware();
 $app->group('/clientes', function (RouteCollectorProxy $group) {
     $group->post('/alta', \clienteController::class . ':altaCliente');
     $group->post('/consultar', \clienteController::class . ':consultarCliente');
+    $group->put('/modificar', \clienteController::class . ':modificarClienteRequest');
+});
+
+$app->group('/reservas', function (RouteCollectorProxy $group) {
+    $group->post('/alta', \reservaController::class . ':altaReserva');
+    $group->post('/consultar/a', \reservaController::class . ':consultarReservaPuntoA');
+    $group->post('/consultar/b', \reservaController::class . ':consultarReservaPuntoB');
+    $group->post('/consultar/c', \reservaController::class . ':consultarReservaPuntoC');
+    $group->post('/consultar/d', \reservaController::class . ':consultarReservaPuntoD');
+    $group->post('/cancelar', \reservaController::class . ':cancelarReserva');
+    $group->post('/ajuste', \reservaController::class . ':ajustarReserva');
 });
 
 $app->run();
