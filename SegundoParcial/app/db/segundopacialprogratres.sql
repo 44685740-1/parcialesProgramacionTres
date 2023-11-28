@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 02:18 AM
+-- Generation Time: Nov 28, 2023 at 09:48 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -58,15 +58,17 @@ CREATE TABLE `clientes` (
   `tipoCliente` varchar(50) NOT NULL,
   `pais` varchar(50) NOT NULL,
   `ciudad` varchar(50) NOT NULL,
-  `telefono` int(11) NOT NULL
+  `telefono` int(11) NOT NULL,
+  `modalidadPago` varchar(50) NOT NULL,
+  `estado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `numeroCliente`, `nombre`, `apellido`, `tipoDocumento`, `numeroDocumento`, `mail`, `tipoCliente`, `pais`, `ciudad`, `telefono`) VALUES
-(6, 872650, 'Alejandro', 'Rozas', 'DNI', 32301114, 'ahuitz@gmail.com', 'individual', 'Argentina', 'Buenos Aires', 1131831276);
+INSERT INTO `clientes` (`id`, `numeroCliente`, `nombre`, `apellido`, `tipoDocumento`, `numeroDocumento`, `mail`, `tipoCliente`, `pais`, `ciudad`, `telefono`, `modalidadPago`, `estado`) VALUES
+(11, 583146, 'ahuitz', 'briceno', 'dni', 44685740, 'ahuitzcaracciolo@gmail.com', 'individual', 'argentina', 'caba', 1131831276, 'efectivo', 'inactivo');
 
 -- --------------------------------------------------------
 
@@ -128,7 +130,7 @@ ALTER TABLE `ajustes`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `reservas`

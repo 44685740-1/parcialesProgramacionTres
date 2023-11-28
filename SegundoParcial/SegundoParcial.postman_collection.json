@@ -63,6 +63,16 @@
 							"key": "fotoPerfil",
 							"type": "file",
 							"src": "/C:/Users/ahuit/OneDrive/Escritorio/cbc/perfilwpp.jpeg"
+						},
+						{
+							"key": "modalidadPago",
+							"value": "efectivo",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "activo",
+							"type": "text"
 						}
 					]
 				},
@@ -322,7 +332,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"numeroCliente\": 872650,\r\n        \"nombre\": \"Alejandro\",\r\n        \"apellido\": \"Rozas\",\r\n        \"tipoDocumento\": \"DNI\",\r\n        \"numeroDocumento\": \"32301114\",\r\n        \"mail\": \"ahuitz@gmail.com\",\r\n        \"tipoCliente\": \"individual\",\r\n        \"pais\": \"Argentina\",\r\n        \"ciudad\": \"Buenos Aires\",\r\n        \"telefono\": \"1131831276\"\r\n}"
+					"raw": "{\r\n        \"numeroCliente\": 940228,\r\n        \"nombre\": \"Alejandro\",\r\n        \"apellido\": \"Rozas\",\r\n        \"tipoDocumento\": \"DNI\",\r\n        \"numeroDocumento\": \"32301114\",\r\n        \"mail\": \"ahuitz@gmail.com\",\r\n        \"tipoCliente\": \"individual\",\r\n        \"pais\": \"Argentina\",\r\n        \"ciudad\": \"Buenos Aires\",\r\n        \"telefono\": \"1131831276\",\r\n        \"modalidadPago\": \"debito\",\r\n        \"estado\": \"inactivo\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/clientes/modificar",
@@ -414,6 +424,232 @@
 					"path": [
 						"reservas",
 						"ajuste"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarReservasPunto10)A)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text"
+						},
+						{
+							"key": "fecha",
+							"value": "2023-05-10",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "cancelada",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/10/a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"10",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarReservasPunto10)B)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "estado",
+							"value": "cancelada",
+							"type": "text"
+						},
+						{
+							"key": "numeroCliente",
+							"value": "872650",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/10/b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"10",
+						"b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarReservasPunto10)D)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "cancelada",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/10/d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"10",
+						"d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarReservaPunto10)e)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "numeroCliente",
+							"value": "872650",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/10/e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"10",
+						"e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarCliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "tipoCliente",
+							"value": "individual",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "numeroCliente",
+							"value": "940228",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "estado",
+							"value": "activo",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/eliminar/individual/583146/inactivo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"eliminar",
+						"individual",
+						"583146",
+						"inactivo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarReservasPunto10)F)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "modalidadPago",
+							"value": "efectivo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/10/f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"10",
+						"f"
 					]
 				}
 			},

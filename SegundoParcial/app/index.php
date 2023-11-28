@@ -38,6 +38,8 @@ $app->group('/clientes', function (RouteCollectorProxy $group) {
     $group->post('/alta', \clienteController::class . ':altaCliente');
     $group->post('/consultar', \clienteController::class . ':consultarCliente');
     $group->put('/modificar', \clienteController::class . ':modificarClienteRequest');
+    //$group->post('/eliminar', \clienteController::class . ':eliminarClienteRequest');
+    $group->put('/eliminar/{tipoCliente}/{numeroCliente}/{estado}', \clienteController::class . ':eliminarClienteRequest');
 });
 
 $app->group('/reservas', function (RouteCollectorProxy $group) {
@@ -48,6 +50,12 @@ $app->group('/reservas', function (RouteCollectorProxy $group) {
     $group->post('/consultar/d', \reservaController::class . ':consultarReservaPuntoD');
     $group->post('/cancelar', \reservaController::class . ':cancelarReserva');
     $group->post('/ajuste', \reservaController::class . ':ajustarReserva');
+    $group->post('/consultar/10/a', \reservaController::class . ':consultarReservaPuntoDiezA');
+    $group->post('/consultar/10/b', \reservaController::class . ':consultarReservaPuntoDiezB');
+    $group->post('/consultar/10/d', \reservaController::class . ':consultarReservaPuntoDiezD');
+    $group->post('/consultar/10/e', \reservaController::class . ':consultarReservaPuntoDiezE');
+    $group->post('/consultar/10/f', \reservaController::class . ':consultarReservaPuntoDiezF');
 });
+
 
 $app->run();
