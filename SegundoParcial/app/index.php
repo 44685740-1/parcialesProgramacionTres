@@ -20,6 +20,8 @@ require_once "./controllers/reservaController.php";
 require_once "./models/ajuste.php";
 require_once "./controllers/ajusteController.php";
 
+require_once "./middlewares/Logger.php";
+require_once "./middlewares/AuthJWT.php";
 
 // Instantiate App
 $app = AppFactory::create();
@@ -35,12 +37,16 @@ $app->addErrorMiddleware(true, true, true);
 $app->addBodyParsingMiddleware();
 
 $app->group('/clientes', function (RouteCollectorProxy $group) {
-    $group->post('/alta', \clienteController::class . ':altaCliente');
+    $group->post('/alta', \clienteController::class . ':altaCliente')->add(\AuthJWT::class . ':registrarMovimientoExitoso')
+    ->add(\AuthJWT::class . ':VerificarTokenRolGerente');
     $group->post('/consultar', \clienteController::class . ':consultarCliente');
     $group->put('/modificar', \clienteController::class . ':modificarClienteRequest');
     //$group->post('/eliminar', \clienteController::class . ':eliminarClienteRequest');
-    $group->put('/eliminar/{tipoCliente}/{numeroCliente}/{estado}', \clienteController::class . ':eliminarClienteRequest');
-});
+    $group->put('/eliminar/{tipoCliente}/{numeroCliente}/{estado}', \clienteController::class . ':eliminarClienteRequest')->add(\AuthJWT::class . ':registrarMovimientoExitoso')
+    ->add(\AuthJWT::class . ':VerificarTokenRolGerente');
+})->add(\AuthJWT::class . ':registroMovimientos')
+->add(\AuthJWT::class . ':VerificarTokenValido');
+
 
 $app->group('/reservas', function (RouteCollectorProxy $group) {
     $group->post('/alta', \reservaController::class . ':altaReserva');
@@ -55,7 +61,12 @@ $app->group('/reservas', function (RouteCollectorProxy $group) {
     $group->post('/consultar/10/d', \reservaController::class . ':consultarReservaPuntoDiezD');
     $group->post('/consultar/10/e', \reservaController::class . ':consultarReservaPuntoDiezE');
     $group->post('/consultar/10/f', \reservaController::class . ':consultarReservaPuntoDiezF');
-});
+})->add(\AuthJWT::class . ':registroMovimientos')
+->add(\AuthJWT::class . ':VerificarTokenValido')
+->add(\AuthJWT::class . ':VerificarTokenRolClienteOrRecepcionista')
+->add(\AuthJWT::class . ':registrarMovimientoExitoso');
 
+//loggin de Usuarios TOKEN
+$app->post('/LoggingUsuario',[\Logger::class, 'LoggearUsuario']);
 
 $app->run();

@@ -341,7 +341,7 @@ class reservaController
         $importe = reservaController::acumuladorImporteCanceladaFechaTipoCliente($tipoCliente, $fecha, $estado);
 
         if ($importe != null) {
-            $payload = json_encode(array("El importe Total Cancelado" => $importe));
+            $payload = json_encode(array("importe_cancelado" => $importe));
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         } else {
