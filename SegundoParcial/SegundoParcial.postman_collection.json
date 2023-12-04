@@ -9,6 +9,16 @@
 		{
 			"name": "clienteAlta",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE0NDQ4MTIsImV4cCI6MTcwMjA0NDgxMiwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoxLCJOb21icmUiOiJBaHVpdHoiLCJNYWlsIjoiYWh1aXR6Y2FyYWNjaW9sb0BnbWFpbC5jb20iLCJSb2wiOiJnZXJlbnRlIn0.8J_esNKO75FavcGbXPQwHE6ZERsroIerDTV-51G4gcY",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -94,6 +104,16 @@
 		{
 			"name": "ClienteConsultar",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE0NDAzNDksImV4cCI6MTcwMjA0MDM0OSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoxLCJOb21icmUiOiJBaHVpdHoiLCJNYWlsIjoiYWh1aXR6Y2FyYWNjaW9sb0BnbWFpbC5jb20iLCJSb2wiOiJnZXJlbnRlIn0.8RkrbWoLg96vQgnwgeX7Y9UMROd2pivLw-6DDccspm4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -106,7 +126,7 @@
 						},
 						{
 							"key": "numeroCliente",
-							"value": "872650",
+							"value": "481257",
 							"type": "text"
 						}
 					]
@@ -129,6 +149,16 @@
 		{
 			"name": "ReservaAlta",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -141,7 +171,7 @@
 						},
 						{
 							"key": "numeroCliente",
-							"value": "872650",
+							"value": "251352",
 							"type": "text"
 						},
 						{
@@ -172,7 +202,7 @@
 						{
 							"key": "fotoReserva",
 							"type": "file",
-							"src": "/C:/Users/ahuit/OneDrive/Escritorio/cbc/perfil.jpeg"
+							"src": "/C:/Users/ahuit/OneDrive/Escritorio/cbc/imagenHabitacionUno.png"
 						}
 					]
 				},
@@ -194,6 +224,16 @@
 		{
 			"name": "consultarReservasPuntoA)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -230,6 +270,16 @@
 		{
 			"name": "ConsultarRservasPuntoB)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -261,6 +311,16 @@
 		{
 			"name": "ConsultarReservasPuntoD)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -292,6 +352,16 @@
 		{
 			"name": "ConsultarReservasPuntoC)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -328,11 +398,21 @@
 		{
 			"name": "ModificarCliente",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE0NDAzNDksImV4cCI6MTcwMjA0MDM0OSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoxLCJOb21icmUiOiJBaHVpdHoiLCJNYWlsIjoiYWh1aXR6Y2FyYWNjaW9sb0BnbWFpbC5jb20iLCJSb2wiOiJnZXJlbnRlIn0.8RkrbWoLg96vQgnwgeX7Y9UMROd2pivLw-6DDccspm4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"numeroCliente\": 940228,\r\n        \"nombre\": \"Alejandro\",\r\n        \"apellido\": \"Rozas\",\r\n        \"tipoDocumento\": \"DNI\",\r\n        \"numeroDocumento\": \"32301114\",\r\n        \"mail\": \"ahuitz@gmail.com\",\r\n        \"tipoCliente\": \"individual\",\r\n        \"pais\": \"Argentina\",\r\n        \"ciudad\": \"Buenos Aires\",\r\n        \"telefono\": \"1131831276\",\r\n        \"modalidadPago\": \"debito\",\r\n        \"estado\": \"inactivo\"\r\n}"
+					"raw": "{\r\n        \"numeroCliente\": 481257,\r\n        \"nombre\": \"Alejandro\",\r\n        \"apellido\": \"Rozas\",\r\n        \"tipoDocumento\": \"DNI\",\r\n        \"numeroDocumento\": \"32301114\",\r\n        \"mail\": \"ahuitz@gmail.com\",\r\n        \"tipoCliente\": \"individual\",\r\n        \"pais\": \"Argentina\",\r\n        \"ciudad\": \"Buenos Aires\",\r\n        \"telefono\": \"1131831276\",\r\n        \"modalidadPago\": \"debito\",\r\n        \"estado\": \"inactivo\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/clientes/modificar",
@@ -432,6 +512,16 @@
 		{
 			"name": "ConsultarReservasPunto10)A)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE0NDU0MDgsImV4cCI6MTcwMjA0NTQwOCwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.k1al6Ehrl02nNY_u7af6a3FbCnG3Dn17k5aGoO3EbYI",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -474,6 +564,16 @@
 		{
 			"name": "ConsultarReservasPunto10)B)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -511,6 +611,16 @@
 		{
 			"name": "ConsultarReservasPunto10)D)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -548,6 +658,16 @@
 		{
 			"name": "ConsultarReservaPunto10)e)",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -580,6 +700,16 @@
 		{
 			"name": "EliminarCliente",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE0NDAzNDksImV4cCI6MTcwMjA0MDM0OSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoxLCJOb21icmUiOiJBaHVpdHoiLCJNYWlsIjoiYWh1aXR6Y2FyYWNjaW9sb0BnbWFpbC5jb20iLCJSb2wiOiJnZXJlbnRlIn0.8RkrbWoLg96vQgnwgeX7Y9UMROd2pivLw-6DDccspm4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -606,7 +736,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/clientes/eliminar/individual/583146/inactivo",
+					"raw": "http://localhost:8080/clientes/eliminar/individual/481257/inactivo",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -616,7 +746,7 @@
 						"clientes",
 						"eliminar",
 						"individual",
-						"583146",
+						"481257",
 						"inactivo"
 					]
 				}
@@ -650,6 +780,102 @@
 						"consultar",
 						"10",
 						"f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UsuarioLoggin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "juan",
+							"type": "text"
+						},
+						{
+							"key": "mail",
+							"value": "juan@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "rol",
+							"value": "recepcionista",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "eljuan",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/LoggingUsuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"LoggingUsuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultarReservasPunto10)C)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE3MDEzNDUsImV4cCI6MTcwMjMwMTM0NSwiYXVkIjoiYTk0YmZlYjU4MzAxODBiNjVmNWI1ZTZlMjA1YzhhYzY2OTFhZGU0OCIsIklkIjoyLCJOb21icmUiOiJKdWFuIiwiTWFpbCI6Imp1YW5AZ21haWwuY29tIiwiUm9sIjoicmVjZXBjaW9uaXN0YSJ9.alvmZcpnBy_AU9Q9dVNSy9586S7ELGkC-zuMVsa43Uk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fechaUno",
+							"value": "2023-05-10",
+							"type": "text"
+						},
+						{
+							"key": "fechaDos",
+							"value": "2023-07-10",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "cancelada",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservas/consultar/10/c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservas",
+						"consultar",
+						"10",
+						"c"
 					]
 				}
 			},

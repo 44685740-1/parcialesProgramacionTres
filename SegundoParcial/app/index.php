@@ -39,11 +39,12 @@ $app->addBodyParsingMiddleware();
 $app->group('/clientes', function (RouteCollectorProxy $group) {
     $group->post('/alta', \clienteController::class . ':altaCliente')->add(\AuthJWT::class . ':registrarMovimientoExitoso')
     ->add(\AuthJWT::class . ':VerificarTokenRolGerente');
-    $group->post('/consultar', \clienteController::class . ':consultarCliente');
+    $group->post('/consultar', \clienteController::class . ':consultarCliente')->add(\AuthJWT::class . ':VerificarTokenRolClienteOrRecepcionista');
     $group->put('/modificar', \clienteController::class . ':modificarClienteRequest');
     //$group->post('/eliminar', \clienteController::class . ':eliminarClienteRequest');
     $group->put('/eliminar/{tipoCliente}/{numeroCliente}/{estado}', \clienteController::class . ':eliminarClienteRequest')->add(\AuthJWT::class . ':registrarMovimientoExitoso')
     ->add(\AuthJWT::class . ':VerificarTokenRolGerente');
+
 })->add(\AuthJWT::class . ':registroMovimientos')
 ->add(\AuthJWT::class . ':VerificarTokenValido');
 
@@ -58,6 +59,7 @@ $app->group('/reservas', function (RouteCollectorProxy $group) {
     $group->post('/ajuste', \reservaController::class . ':ajustarReserva');
     $group->post('/consultar/10/a', \reservaController::class . ':consultarReservaPuntoDiezA');
     $group->post('/consultar/10/b', \reservaController::class . ':consultarReservaPuntoDiezB');
+    $group->post('/consultar/10/c', \reservaController::class . ':consultarReservaPuntoDiezC');
     $group->post('/consultar/10/d', \reservaController::class . ':consultarReservaPuntoDiezD');
     $group->post('/consultar/10/e', \reservaController::class . ':consultarReservaPuntoDiezE');
     $group->post('/consultar/10/f', \reservaController::class . ':consultarReservaPuntoDiezF');

@@ -24,12 +24,15 @@ class guardarImagen
 
 		// Realizamos las validaciones del archivo
 		if (!((strpos($tipo_archivo, "png") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < 100000))) {
-			echo "La extensión o el tamaño de los archivos no es correcta. <br><br><table><tr><td><li>Se permiten archivos .png o .jpg<br><li>se permiten archivos de 100 Kb máximo.</td></tr></table>";
+			//echo "La extensión o el tamaño de los archivos no es correcta. <br><br><table><tr><td><li>Se permiten archivos .png o .jpg<br><li>se permiten archivos de 100 Kb máximo.</td></tr></table>";
+			return false;
 		} else {
 			if (move_uploaded_file($_FILES['fotoPerfil']['tmp_name'],  $ruta_destino)) {
-				echo "El archivo ha sido cargado correctamente.";
+				//echo "El archivo ha sido cargado correctamente.";
+				return true;
 			} else {
-				echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+				//echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+				return false;
 			}
 		}
 		
@@ -48,12 +51,15 @@ class guardarImagen
 
 		// Realizamos las validaciones del archivo
 		if (!((strpos($tipo_archivo, "png") || strpos($tipo_archivo, "jpeg")) && ($tamano_archivo < 100000))) {
-			echo "La extensión o el tamaño de los archivos no es correcta. <br><br><table><tr><td><li>Se permiten archivos .png o .jpg<br><li>se permiten archivos de 100 Kb máximo.</td></tr></table>";
+			//echo "La extensión o el tamaño de los archivos no es correcta. <br><br><table><tr><td><li>Se permiten archivos .png o .jpg<br><li>se permiten archivos de 100 Kb máximo.</td></tr></table>";
+			return false;
 		} else {
 			if (move_uploaded_file($_FILES['fotoReserva']['tmp_name'],  $ruta_destino)) {
-				echo "El archivo ha sido cargado correctamente.";
+				//echo "El archivo ha sido cargado correctamente.";
+				return true;
 			} else {
-				echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+				//echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+				return false;
 			}
 		}
 	}

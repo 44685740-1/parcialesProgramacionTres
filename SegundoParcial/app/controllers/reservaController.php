@@ -53,119 +53,6 @@ class reservaController
 
     //ABM directamente con las request de SLIM
 
-    public static function acumuladorImporteHabitacionFecha($tipoHabitacion, $fecha)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT SUM(importeTotal) AS totalImporte
-        FROM reservas
-        WHERE tipoHabitacion = :tipoHabitacion AND fechaDeEntrada = STR_TO_DATE(:fecha, '%Y-%m-%d');");
-
-        $consulta->bindValue(':tipoHabitacion', $tipoHabitacion, PDO::PARAM_STR);
-        $consulta->bindValue(':fecha', $fecha, PDO::PARAM_STR);
-        $consulta->execute();
-
-        $importeTotal = $consulta->fetchColumn();
-        return $importeTotal;
-    }
-
-    public static function acumuladorImporteCanceladaFechaTipoCliente($tipoCliente, $fecha, $estado)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT SUM(importeTotal) AS totalImporte
-        FROM reservas
-        WHERE tipoCliente = :tipoCliente  AND estado = :estado AND fechaDeEntrada = STR_TO_DATE(:fecha, '%Y-%m-%d');");
-
-        $consulta->bindValue(':tipoCliente', $tipoCliente, PDO::PARAM_STR);
-        $consulta->bindValue(':fecha', $fecha, PDO::PARAM_STR);
-        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
-        $consulta->execute();
-
-        $importeTotal = $consulta->fetchColumn();
-        return $importeTotal;
-    }
-
-    public static function listadoReservasNumeroCliente($numeroCliente)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
-        WHERE numeroCliente = :numeroCliente ");
-
-        $consulta->bindValue(':numeroCliente', $numeroCliente, PDO::PARAM_INT);
-        $consulta->execute();
-
-        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
-        return $listaReservas;
-    }
-
-    public static function listadoReservasNumeroClienteCanceladas($numeroCliente, $estado)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
-        WHERE numeroCliente = :numeroCliente AND estado = :estado");
-
-        $consulta->bindValue(':numeroCliente', $numeroCliente, PDO::PARAM_INT);
-        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
-        $consulta->execute();
-
-        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
-        return $listaReservas;
-    }
-
-    public static function listadoReservasCanceladasTipoCliente($tipoCliente, $estado)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
-        WHERE tipoCliente = :tipoCliente AND estado = :estado");
-
-        $consulta->bindValue(':tipoCliente', $tipoCliente, PDO::PARAM_STR);
-        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
-        $consulta->execute();
-
-        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
-        return $listaReservas;
-    }
-
-    public static function listadoReservasTipoHabitacion($tipoHabitacion)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
-        WHERE tipoHabitacion = :tipoHabitacion ");
-
-        $consulta->bindValue(':tipoHabitacion', $tipoHabitacion, PDO::PARAM_STR);
-        $consulta->execute();
-
-        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
-        return $listaReservas;
-    }
-
-    public static function listadoReservasFecha($fechaUno, $fechaDos)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
-        WHERE fechaDeEntrada = :fechaUno || fechaDeEntrada = :fechaDos ");
-
-        $consulta->bindValue(':fechaUno', $fechaUno, PDO::PARAM_STR);
-        $consulta->bindValue(':fechaDos', $fechaDos, PDO::PARAM_STR);
-        $consulta->execute();
-
-        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
-        return $listaReservas;
-    }
-
-    public static function buscarReservaId($id)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
-        WHERE id = :id ");
-
-        $consulta->bindValue(':id', $id, PDO::PARAM_INT);
-        $consulta->execute();
-
-        $listaReservas = $consulta->fetchObject("reserva");
-        return $listaReservas;
-    }
-
-
     public function altaReserva($request, $response)
     {
         $data = $request->getParsedBody();
@@ -177,7 +64,7 @@ class reservaController
         $importeTotal = $data['importeTotalReserva'];
         $estado = $data["estado"];
 
-        $clienteBuscado = clienteController::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
+        $clienteBuscado = cliente::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
 
         if ($clienteBuscado != null) {
             $reserva = new reserva();
@@ -187,10 +74,9 @@ class reservaController
             $respuesta = $reservaController->InsertarReserva($fechaDeEntrada, $fechaDeSalida, $tipoHabitacion, $importeTotal, $numeroCliente, $tipoCliente, $estado);
 
             $guardarImagenReserva = new guardarImagen();
-            $guardarImagenReserva->guardarImagenReserva($reserva);
+            $respuestaGuardarImagen =  $guardarImagenReserva->guardarImagenReserva($reserva);
 
-            $respuestaJson = json_encode(['resultado' => $respuesta]);
-            $payload = json_encode($respuestaJson);
+            $payload = json_encode(array("Respuesta_Reserva_Ingresada" => $respuesta, "respuesta_guardar_imagen_reserva" => $respuestaGuardarImagen));
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         } else {
@@ -207,7 +93,7 @@ class reservaController
 
         if (isset($data["fecha"])) {
             $fecha = $data['fecha'];
-            $importeTotal = reservaController::acumuladorImporteHabitacionFecha($tipoHabitacion, $fecha);
+            $importeTotal = reserva::acumuladorImporteHabitacionFecha($tipoHabitacion, $fecha);
 
             $payload = json_encode(array("Importe Total De Reservas" => $importeTotal));
             $response->getBody()->write($payload);
@@ -218,7 +104,7 @@ class reservaController
             $fechaAyer->modify("-1 days");
             $fechaAyerString = $fechaAyer->format("d-m-Y");
 
-            $importeTotal = reservaController::acumuladorImporteHabitacionFecha($tipoHabitacion, $fechaAyerString);
+            $importeTotal = reserva::acumuladorImporteHabitacionFecha($tipoHabitacion, $fechaAyerString);
             if ($importeTotal === null) {
                 $importeTotal = 0;
             }
@@ -233,7 +119,7 @@ class reservaController
         $data = $request->getParsedBody();
         $numeroCliente = $data["numeroCliente"];
 
-        $listaReservas = reservaController::listadoReservasNumeroCliente($numeroCliente);
+        $listaReservas = reserva::listadoReservasNumeroCliente($numeroCliente);
 
         if ($listaReservas != null) {
             $payload = json_encode($listaReservas);
@@ -251,7 +137,7 @@ class reservaController
         $data = $request->getParsedBody();
         $tipoHabitacion = $data["tipoHabitacion"];
 
-        $listaReservas = reservaController::listadoReservasTipoHabitacion($tipoHabitacion);
+        $listaReservas = reserva::listadoReservasTipoHabitacion($tipoHabitacion);
 
         if ($listaReservas != null) {
             $payload = json_encode($listaReservas);
@@ -270,7 +156,7 @@ class reservaController
         $fechaUno = $data["fechaUno"];
         $fechaDos = $data["fechaDos"];
 
-        $listaReservas = reservaController::listadoReservasFecha($fechaUno, $fechaDos);
+        $listaReservas = reserva::listadoReservasFecha($fechaUno, $fechaDos);
 
         if ($listaReservas != null) {
             $payload = json_encode($listaReservas);
@@ -290,8 +176,8 @@ class reservaController
         $numeroCliente = $data["numeroCliente"];
         $reservaId = $data["reservaId"];
 
-        $reservaBuscada = reservaController::buscarReservaId($reservaId);
-        $clienteBuscado = clienteController::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
+        $reservaBuscada = reserva::buscarReservaId($reservaId);
+        $clienteBuscado = cliente::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
         if ($reservaBuscada != null && $clienteBuscado != null) {
             $reservaController = new reservaController();
             $respuesta = $reservaController->modificarReserva($reservaBuscada->id, $reservaBuscada->fechaDeEntrada, $reservaBuscada->fechaDeSalida, $reservaBuscada->tipoHabitacion, $reservaBuscada->importeTotal, $reservaBuscada->numeroCliente, $reservaBuscada->tipoCliente, "cancelada");
@@ -313,7 +199,7 @@ class reservaController
         $motivo = $data["motivo"];
         $nuevoImporte = $data["nuevoImporte"];
 
-        $reservaBuscada = reservaController::buscarReservaId($numeroReserva);
+        $reservaBuscada = reserva::buscarReservaId($numeroReserva);
 
         if ($reservaBuscada != null) {
             $reservaController = new reservaController();
@@ -338,7 +224,7 @@ class reservaController
         $estado = $data["estado"];
         $fecha = $data["fecha"];
 
-        $importe = reservaController::acumuladorImporteCanceladaFechaTipoCliente($tipoCliente, $fecha, $estado);
+        $importe = reserva::acumuladorImporteCanceladaFechaTipoCliente($tipoCliente, $fecha, $estado);
 
         if ($importe != null) {
             $payload = json_encode(array("importe_cancelado" => $importe));
@@ -358,7 +244,7 @@ class reservaController
         $numeroCliente = $data["numeroCliente"];
         $estado = $data["estado"];
 
-        $listaReservas = reservaController::listadoReservasNumeroClienteCanceladas($numeroCliente, $estado);
+        $listaReservas = reserva::listadoReservasNumeroClienteCanceladas($numeroCliente, $estado);
 
         if ($listaReservas != null) {
             $payload = json_encode($listaReservas);
@@ -377,7 +263,7 @@ class reservaController
         $tipoCliente = $data["tipoCliente"];
         $estado = $data["estado"];
 
-        $listaReservas = reservaController::listadoReservasCanceladasTipoCliente($tipoCliente, $estado);
+        $listaReservas = reserva::listadoReservasCanceladasTipoCliente($tipoCliente, $estado);
 
         if ($listaReservas != null) {
             $payload = json_encode($listaReservas);
@@ -395,7 +281,7 @@ class reservaController
         $data = $request->getParsedBody();
         $numeroCliente = $data["numeroCliente"];
 
-        $listaReservas = reservaController::listadoReservasNumeroCliente($numeroCliente);
+        $listaReservas = reserva::listadoReservasNumeroCliente($numeroCliente);
 
         if ($listaReservas != null) {
             $payload = json_encode($listaReservas);
@@ -403,6 +289,26 @@ class reservaController
             return $response->withHeader('Content-Type', 'application/json');
         } else {
             $payload = json_encode(array("Respuesta" => "No hay Reservas Canceladas con ese Numero de Cliente"));
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json');
+        }
+    }
+
+    public function consultarReservaPuntoDiezC($request, $response)
+    {
+        $data = $request->getParsedBody();
+        $fechaUno = $data["fechaUno"];
+        $fechaDos = $data["fechaDos"];
+        $estado = $data["estado"];
+
+        $listaReservas = reserva::listadoReservasFechaCanceladas($estado,$fechaUno,$fechaDos);
+
+        if ($listaReservas != null) {
+            $payload = json_encode($listaReservas);
+            $response->getBody()->write($payload);
+            return $response->withHeader('Content-Type', 'application/json');
+        } else {
+            $payload = json_encode(array("Respuesta" => "No hay Reservas Canceladas En ese Rango de Fechas"));
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }

@@ -152,4 +152,41 @@ class cliente
     {
         
     }
+
+    public static function buscarClienteNombreTipoCliente($nombre, $tipoCliente)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `clientes` 
+        WHERE nombre = :nombre AND tipoCliente = :tipoCliente");
+        $consulta->bindValue(':nombre', $nombre, PDO::PARAM_STR);
+        $consulta->bindValue(':tipoCliente', $tipoCliente, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $usuarioBuscado = $consulta->fetchObject("cliente");
+        return $usuarioBuscado;
+    }
+
+    public static function buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `clientes` 
+        WHERE numeroCliente = :numeroCliente AND tipoCliente = :tipoCliente");
+        $consulta->bindValue(':numeroCliente', $numeroCliente, PDO::PARAM_INT);
+        $consulta->bindValue(':tipoCliente', $tipoCliente, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $usuarioBuscado = $consulta->fetchObject("cliente");
+        return $usuarioBuscado;
+    }
+
+    public static function modificarEstadoCliente($id, $estado)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("UPDATE `clientes` SET `estado`= :estado 
+        WHERE id = :id");
+
+        $consulta->bindValue(':id', $id, PDO::PARAM_INT);
+        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
+        return $consulta->execute();
+    }
 }

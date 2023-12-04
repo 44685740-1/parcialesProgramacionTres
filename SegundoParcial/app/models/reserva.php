@@ -117,4 +117,131 @@ class reserva
         $consulta->execute();
         return $consulta->rowCount();
     }
+
+    public static function acumuladorImporteHabitacionFecha($tipoHabitacion, $fecha)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT SUM(importeTotal) AS totalImporte
+        FROM reservas
+        WHERE tipoHabitacion = :tipoHabitacion AND fechaDeEntrada = STR_TO_DATE(:fecha, '%Y-%m-%d');");
+
+        $consulta->bindValue(':tipoHabitacion', $tipoHabitacion, PDO::PARAM_STR);
+        $consulta->bindValue(':fecha', $fecha, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $importeTotal = $consulta->fetchColumn();
+        return $importeTotal;
+    }
+
+    public static function acumuladorImporteCanceladaFechaTipoCliente($tipoCliente, $fecha, $estado)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT SUM(importeTotal) AS totalImporte
+        FROM reservas
+        WHERE tipoCliente = :tipoCliente  AND estado = :estado AND fechaDeEntrada = STR_TO_DATE(:fecha, '%Y-%m-%d');");
+
+        $consulta->bindValue(':tipoCliente', $tipoCliente, PDO::PARAM_STR);
+        $consulta->bindValue(':fecha', $fecha, PDO::PARAM_STR);
+        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $importeTotal = $consulta->fetchColumn();
+        return $importeTotal;
+    }
+
+    public static function listadoReservasNumeroCliente($numeroCliente)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
+        WHERE numeroCliente = :numeroCliente ");
+
+        $consulta->bindValue(':numeroCliente', $numeroCliente, PDO::PARAM_INT);
+        $consulta->execute();
+
+        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
+        return $listaReservas;
+    }
+
+    public static function listadoReservasNumeroClienteCanceladas($numeroCliente, $estado)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
+        WHERE numeroCliente = :numeroCliente AND estado = :estado");
+
+        $consulta->bindValue(':numeroCliente', $numeroCliente, PDO::PARAM_INT);
+        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
+        return $listaReservas;
+    }
+
+    public static function listadoReservasCanceladasTipoCliente($tipoCliente, $estado)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
+        WHERE tipoCliente = :tipoCliente AND estado = :estado");
+
+        $consulta->bindValue(':tipoCliente', $tipoCliente, PDO::PARAM_STR);
+        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
+        return $listaReservas;
+    }
+
+    public static function listadoReservasTipoHabitacion($tipoHabitacion)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
+        WHERE tipoHabitacion = :tipoHabitacion ");
+
+        $consulta->bindValue(':tipoHabitacion', $tipoHabitacion, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
+        return $listaReservas;
+    }
+
+    public static function listadoReservasFecha($fechaUno, $fechaDos)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
+        WHERE fechaDeEntrada = :fechaUno || fechaDeEntrada = :fechaDos");
+
+        $consulta->bindValue(':fechaUno', $fechaUno, PDO::PARAM_STR);
+        $consulta->bindValue(':fechaDos', $fechaDos, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
+        return $listaReservas;
+    }
+
+    public static function listadoReservasFechaCanceladas($estado,$fechaUno, $fechaDos)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
+        WHERE  estado = :estado AND (fechaDeEntrada = :fechaUno || fechaDeEntrada = :fechaDos)");
+
+        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
+        $consulta->bindValue(':fechaUno', $fechaUno, PDO::PARAM_STR);
+        $consulta->bindValue(':fechaDos', $fechaDos, PDO::PARAM_STR);
+        $consulta->execute();
+
+        $listaReservas = $consulta->fetchAll(PDO::FETCH_CLASS, "reserva");
+        return $listaReservas;
+    }
+
+    public static function buscarReservaId($id)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `reservas` 
+        WHERE id = :id ");
+
+        $consulta->bindValue(':id', $id, PDO::PARAM_INT);
+        $consulta->execute();
+
+        $listaReservas = $consulta->fetchObject("reserva");
+        return $listaReservas;
+    }
 }

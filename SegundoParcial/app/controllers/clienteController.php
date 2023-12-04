@@ -58,42 +58,7 @@ class clienteController
         return cliente::traerTodosLosClientes();
     }
 
-    public static function buscarClienteNombreTipoCliente($nombre, $tipoCliente)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `clientes` 
-        WHERE nombre = :nombre AND tipoCliente = :tipoCliente");
-        $consulta->bindValue(':nombre', $nombre, PDO::PARAM_STR);
-        $consulta->bindValue(':tipoCliente', $tipoCliente, PDO::PARAM_STR);
-        $consulta->execute();
-
-        $usuarioBuscado = $consulta->fetchObject("cliente");
-        return $usuarioBuscado;
-    }
-
-    public static function buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `clientes` 
-        WHERE numeroCliente = :numeroCliente AND tipoCliente = :tipoCliente");
-        $consulta->bindValue(':numeroCliente', $numeroCliente, PDO::PARAM_INT);
-        $consulta->bindValue(':tipoCliente', $tipoCliente, PDO::PARAM_STR);
-        $consulta->execute();
-
-        $usuarioBuscado = $consulta->fetchObject("cliente");
-        return $usuarioBuscado;
-    }
-
-    public static function modificarEstadoCliente($id, $estado)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("UPDATE `clientes` SET `estado`= :estado 
-        WHERE id = :id");
-
-        $consulta->bindValue(':id', $id, PDO::PARAM_INT);
-        $consulta->bindValue(':estado', $estado, PDO::PARAM_STR);
-        return $consulta->execute();
-    }
+    
 
 
     //ABM con los request de SLIM directamente
@@ -113,12 +78,12 @@ class clienteController
         $modalidadPago = $data["modalidadPago"];
         $estado = $data["estado"];
 
-        $clienteBuscado = clienteController::buscarClienteNombreTipoCliente($nombre, $tipoCliente);
+        $clienteBuscado = cliente::buscarClienteNombreTipoCliente($nombre, $tipoCliente);
 
         if ($clienteBuscado != null) {
             $clienteController = new clienteController();
             $resultado = $clienteController->modificarCliente($clienteBuscado->id, $numeroCliente, $nombre, $apellido, $tipoDocumento, $numeroDocumento, $mail, $tipoCliente, $pais, $ciudad, $telefono, $modalidadPago, $estado);
-            $payload = json_encode(array("Resultado Modificar" => $resultado));
+            $payload = json_encode(array("Resultado_Modificar" => $resultado));
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         } else {
@@ -129,10 +94,9 @@ class clienteController
             $respuesta = $clienteController->InsertarCliente($numeroCliente, $nombre, $apellido, $tipoDocumento, $numeroDocumento, $mail, $tipoCliente, $pais, $ciudad, $telefono, $modalidadPago, $estado);
 
             $guardarImagenCliente = new guardarImagen();
-            $guardarImagenCliente->guardarImagenCliente($cliente);
-            //retorno el id del usuario Ingresado
-            $respuestaJson = json_encode(['resultado' => $respuesta]);
-            $payload = json_encode($respuestaJson);
+            $retornoGuardarImagen = $guardarImagenCliente->guardarImagenCliente($cliente);
+            
+            $payload = json_encode(array("ultimo_id_ingresado" => $respuesta,"Respuesta_imagen_guardada" => $retornoGuardarImagen));
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -144,7 +108,7 @@ class clienteController
         $tipoCliente = $data["tipoCliente"];
         $numeroCliente = $data["numeroCliente"];
 
-        $clienteBuscado = clienteController::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
+        $clienteBuscado = cliente::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
 
         if ($clienteBuscado != null) {
             $payload = json_encode(array("Pais" => "$clienteBuscado->pais", "Ciudad" => "$clienteBuscado->ciudad", "Telefono" => "$clienteBuscado->telefono"));
@@ -174,12 +138,12 @@ class clienteController
         $modalidadPago = $data["modalidadPago"];
         $estado = $data["estado"];
 
-        $clienteBuscado = clienteController::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
+        $clienteBuscado = cliente::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
 
         if ($clienteBuscado != null) {
             $clienteController = new clienteController();
             $resultado = $clienteController->modificarCliente($clienteBuscado->id, $numeroCliente, $nombre, $apellido, $tipoDocumento, $numeroDocumento, $mail, $tipoCliente, $pais, $ciudad, $telefono, $modalidadPago, $estado);
-            $payload = json_encode(array("Resultado Modificar" => $resultado));
+            $payload = json_encode(array("Resultado_Modificar" => $resultado));
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         } else {
@@ -201,13 +165,13 @@ class clienteController
         $numeroCliente = $args["numeroCliente"];
         $estado = $args["estado"];
 
-        $clienteBuscado = clienteController::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
+        $clienteBuscado = cliente::buscarClienteNumeroTipoCliente($numeroCliente, $tipoCliente);
 
         if ($clienteBuscado != null) {
-            $respuesta = clienteController::modificarEstadoCliente($clienteBuscado->id, $estado);
+            $respuesta = cliente::modificarEstadoCliente($clienteBuscado->id, $estado);
             $resultado = cliente::moverCarpetaCliente($numeroCliente,$tipoCliente);
             
-            $payload = json_encode(array("Resultado Modificar Estado Cliente" => $respuesta,"Reseultado Imagen Movida" => $respuesta));
+            $payload = json_encode(array("Resultado_Modificar_Estado_Cliente" => $respuesta,"Reseultado_Imagen_Movida" => $respuesta));
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         } else {
